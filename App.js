@@ -1,4 +1,5 @@
 import 'react-native-gesture-handler';
+import React,{useEffect} from 'react';
 /**
  * Sample React Native App
  * https://github.com/facebook/react-native
@@ -9,17 +10,20 @@ import 'react-native-gesture-handler';
 
 import Nav from './src/Navigation/Navigation';
 import {GlobalAuthContext} from './src/Context/AuthLoginContext'
+import CodePush from 'react-native-code-push';
+const codePushOptions = {checkFrequency: CodePush.CheckFrequency.ON_APP_START}
 
 
-
-
-/* $FlowFixMe[missing-local-annot] The type annotation(s) required by Flow's
- * LTI update could not be added via codemod */
 
 
 const App = () => {
 
- 
+  useEffect(()=>{
+    CodePush.sync({
+      updateDialog:true,
+      installMode: CodePush.InstallMode.IMMEDIATE
+    });
+  })
   
   return (
     <GlobalAuthContext>
@@ -32,4 +36,4 @@ const App = () => {
 
 
 
-export default App;
+export default CodePush(codePushOptions)(App);

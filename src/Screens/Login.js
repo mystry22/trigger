@@ -32,7 +32,7 @@ const Login = () => {
   }
 
 
-  const Login = async()=>{
+  const login = async()=>{
     const isValid = valid();
   
     if(isValid == 'err'){
@@ -70,7 +70,7 @@ const Login = () => {
   }
   return (
     <LoginComponent
-      onpress={Login}
+      onpress={login}
       updateEmail={updateEmail}
       updatePass={updatePass}
     />

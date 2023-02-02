@@ -14,6 +14,7 @@ const LoginComponent = ({onpress,updateEmail,updatePass}) => {
     return (
         <View style={styles.container}>
             {/* Loggo Section */}
+            
             <Image source={require('../Assets/logo.png')} style={styles.logoImage} />
             {/* Text Section */}
             <Text style={styles.boldText}>Login</Text>
