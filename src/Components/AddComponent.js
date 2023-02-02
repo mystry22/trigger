@@ -5,7 +5,7 @@ import Menu from '../Screens/Menu';
 import OnboardButton from '../Reusables/OnboardButton';
 
 
-const DeductComponent = ({updateAmt,updateName,onpress}) => {
+const AddComponent = ({updateAmt,updateName,onpress,indicate}) => {
     return (
         <View style={styles.wrap}>
             <View style={styles.container}>
@@ -14,14 +14,14 @@ const DeductComponent = ({updateAmt,updateName,onpress}) => {
                 <TextInput style={styles.input} onChangeText={(val)=>updateName(val)} />
                 <Text style={styles.formLabel}>Amount</Text>
                 <TextInput style={styles.input} keyboardType='numeric' onChangeText={(val)=>updateAmt(val)} />
-                <OnboardButton title={'Add Funds'} onpress={onpress} />
+                <OnboardButton title={'Add Funds'} onpress={onpress} indicate={indicate} />
             </View>
             <Menu />
         </View>
     )
 }
 
-export default DeductComponent;
+export default AddComponent;
 
 const styles = StyleSheet.create({
     container: {

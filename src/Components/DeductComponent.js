@@ -5,7 +5,7 @@ import Menu from '../Screens/Menu';
 import OnboardButton from '../Reusables/OnboardButton';
 
 
-const DeductComponent = ({updateAmt,updateName,onpress}) => {
+const DeductComponent = ({updateAmt,updateName,onpress,indicate}) => {
     return (
         <View style={styles.wrap}>
             <View style={styles.container}>
@@ -14,7 +14,7 @@ const DeductComponent = ({updateAmt,updateName,onpress}) => {
                 <TextInput style={styles.input} onChangeText={(val)=>updateName(val)} />
                 <Text style={styles.formLabel}>Amount</Text>
                 <TextInput style={styles.input} keyboardType='numeric' onChangeText={(val)=>updateAmt(val)} />
-                <OnboardButton title={'Widthdraw'} onpress={onpress} />
+                <OnboardButton title={'Widthdraw'} onpress={onpress} indicate={indicate} />
             </View>
             <Menu  />
         </View>

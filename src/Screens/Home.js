@@ -1,6 +1,7 @@
 import React,{useEffect,useContext} from 'react';
 import HomeComponent from '../Components/HomeComponent';
 import {AuthLoginContext} from '../Context/AuthLoginContext';
+import Loader from '../Utils/Loader';
 
 
 const Home = () => {
@@ -12,11 +13,25 @@ const Home = () => {
 
   
   return (
+    // <HomeComponent 
+    // share = {share}
+    // graphData={graphData}
+    // userDetail={userDetail}
+    // />
+
+    <>
+    {userDetail && share  && graphData ? 
+
     <HomeComponent 
     share = {share}
     graphData={graphData}
     userDetail={userDetail}
     />
+
+    :
+      <Loader />
+  }
+    </>
   )
 }
 

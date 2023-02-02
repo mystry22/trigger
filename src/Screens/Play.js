@@ -10,6 +10,7 @@ const Play = () => {
   const [amount, setAmount] = useState('');
   const [odd, setOdd] = useState('');
   const [pot_win, setPot_win] = useState('');
+  const [indicate,setIndicator] = useState('no');
 
   const {setChanges} = useContext(AuthLoginContext);
 
@@ -42,8 +43,9 @@ const Play = () => {
 
   const Play = async()=>{
     const isValid = valid();
-  
+    setIndicator('yes');
     if(isValid == 'err'){
+      setIndicator('no');
       Alert.alert('OOPS', 'One or more field validations failed, please reconfirm input', [
         {
           text: 'Ok',
@@ -54,8 +56,10 @@ const Play = () => {
       ]);
     
     }else{
+      
       const minAmt = odd * amount;
       if(minAmt > pot_win){
+        setIndicator('no');
         Alert.alert('OOPS', 'Kindly reconfirm total win', [
           {
             text: 'Ok',
@@ -74,6 +78,7 @@ const Play = () => {
 
         const res = await play(data);
         if(res.msg == 'Bookie placed successfuly'){
+          setIndicator('no');
           Alert.alert('Success', 'Bookie placed successful', [
             {
               text: 'Ok',
@@ -84,6 +89,7 @@ const Play = () => {
           ]);
 
         }else{
+          setIndicator('no');
           Alert.alert('OOPS', 'Unable to complete request at the moment', [
             {
               text: 'Ok',
@@ -108,6 +114,7 @@ const Play = () => {
       updateOdd={updateOdd}
       updatePotWin={updatePotWin}
       onpress={Play}
+      indicate={indicate}
     />
 
   )

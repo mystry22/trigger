@@ -7,6 +7,7 @@ import {AuthLoginContext} from '../Context/AuthLoginContext';
 const Add = () => {
   const [name,setName] = useState('');
   const [amt,setAmt] = useState('');
+  const [indicate,setIndicator] = useState('no');
   const{setChanges} = useContext(AuthLoginContext);
 
   const updateName = (val)=>{
@@ -30,8 +31,9 @@ const Add = () => {
 
   const addFunds = async()=>{
     const isValid = valid();
-
+    setIndicator('yes');
     if(isValid == 'err'){
+      setIndicator('no')
       Alert.alert('OOPS', 'One or more field validations failed, please reconfirm input', [
         {
           text: 'Cancel',
@@ -49,6 +51,7 @@ const Add = () => {
       const res = await addfunds(data);
 
       if(res.msg == 'Addition successful, a notification mail will be sent to all Admins'){
+        setIndicator('no')
         Alert.alert('Success', 'Funds Added Successfully', [
           {
             text: 'Ok',
@@ -77,6 +80,7 @@ const Add = () => {
       updateAmt={updateAmt}
       updateName={updateName}
       onpress={addFunds}
+      indicate={indicate}
     />
   )
 }

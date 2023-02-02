@@ -1,11 +1,13 @@
 import React from 'react';
-import { StyleSheet, ActivityIndicator,SafeAreaView,Image} from 'react-native';
+import { StyleSheet, ActivityIndicator,SafeAreaView,Image,Text} from 'react-native';
 
 const Loader =()=>{
 
     return <SafeAreaView style={style.loader}>
         <Image source={require('../Assets/logo.png' )} style={style.img} />
-        <ActivityIndicator size={'large'} />
+        <ActivityIndicator size={'large'} color={'#fff'} />
+
+        <Text style={style.belowText}>Please Wait ...</Text>
     </SafeAreaView>
 }
 
@@ -25,5 +27,10 @@ const style = StyleSheet.create({
     height:200,
     marginBottom:20,
     borderRadius:10
+   },
+   belowText:{
+    color: 'gray',
+    fontSize:16,
+    textAlign:'center'
    }
 })

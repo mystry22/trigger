@@ -9,6 +9,7 @@ import {AuthLoginContext} from '../Context/AuthLoginContext';
 const Deducts = () => {
   const [name,setName] = useState('');
   const [amt,setAmt] = useState('');
+  const [indicate,setIndicator] = useState('no');
   const{setChanges} = useContext(AuthLoginContext);
 
   const updateName = (val)=>{
@@ -32,8 +33,9 @@ const Deducts = () => {
 
   const removeFunds = async()=>{
     const isValid = valid();
-
+    setIndicator('yes');
     if(isValid == 'err'){
+      setIndicator('no');
       Alert.alert('OOPS', 'One or more field validations failed, please reconfirm input', [
         {
           text: 'Ok',
@@ -51,6 +53,7 @@ const Deducts = () => {
       const res = await removefunds(data);
 
       if(res.msg == 'Deduction successful, a notification mail will be sent to all Admins'){
+        setIndicator('no');
         Alert.alert('Success', 'Funds Removed Successfully', [
           {
             text: 'Ok',
@@ -60,6 +63,7 @@ const Deducts = () => {
           
         ]);
       }else if(res.msg == 'You cannot withdraw more than your available balance'){
+        setIndicator('no');
         Alert.alert('OOPS', 'You cannot withdraw more than your available balance', [
           {
             text: 'Ok',
@@ -69,6 +73,7 @@ const Deducts = () => {
           
         ]);
       }else{
+        setIndicator('no');
         Alert.alert('OOPS', 'Unable to complete request at the moment', [
           {
             text: 'Ok',
@@ -86,6 +91,7 @@ const Deducts = () => {
           updateAmt={updateAmt}
           updateName={updateName}
           onpress={removeFunds}
+          indicate={indicate}
         />
   )
 }

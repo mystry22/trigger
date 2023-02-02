@@ -1,18 +1,18 @@
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView,ActivityIndicator } from 'react-native';
 import React from 'react';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Menu from '../Screens/Menu';
 import colors from '../Utils/color';
 
 const StatsComponent = ({admincount,wins,pendings,loss,tract}) => {
-    console.log
+
     return (
         <View style={styles.wrap}>
             <View style={styles.container}>
                 {/* Top Triger and logout */}
                 <View style={styles.topNav}>
                     <View style={{ flexDirection: 'row' }} >
-                        <Text style={styles.smallText}>Active Members: {admincount}</Text>
+                        <Text style={styles.smallText}>Active Members: {admincount ? admincount : <ActivityIndicator color={'#fff'} size='small' />}</Text>
                     </View>
                     <View >
 
@@ -34,12 +34,12 @@ const StatsComponent = ({admincount,wins,pendings,loss,tract}) => {
                     <View style={{ flexDirection: 'row', justifyContent: 'space-evenly' }}>
                         <View style={{ flexDirection: 'row' }}>
                             <Text style={[styles.smallText, { lineHeight: 45, fontSize: 12, color: 'gray' }]}>%</Text>
-                            <Text style={[styles.boldText, { color: '#fff', marginRight: 25, fontSize: 25 }]}>{parseInt(wins)}</Text>
+                            <Text style={[styles.boldText, { color: '#fff', marginRight: 25, fontSize: 25 }]}>{wins ?  parseInt(wins) : <ActivityIndicator color={'#fff'} size={'small'} />}</Text>
 
                         </View>
                         <View style={{ flexDirection: 'row' }}>
                             <Text style={[styles.smallText, { lineHeight: 45, fontSize: 12, color: 'gray' }]}>%</Text>
-                            <Text style={[styles.boldText, { color: '#fff', fontSize: 25 }]}>{parseInt(loss)}</Text>
+                            <Text style={[styles.boldText, { color: '#fff', fontSize: 25 }]}>{parseInt(loss)  }</Text>
                         </View>
                     </View>
                 </View>
@@ -72,7 +72,7 @@ const StatsComponent = ({admincount,wins,pendings,loss,tract}) => {
                             <Text style={[styles.bookieCode, { color: colors.gray }]}>{tractions.amount}</Text>
                         </View>
                     )) :
-                    <Text style={{color:colors.gray}}>No Transaction Available</Text>
+                    <Text style={{color:colors.gray}}>No Transaction Available Yet</Text>
                 
                 }
 

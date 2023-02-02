@@ -9,7 +9,8 @@ const PlayComponent = ({
     updateAmount,
     updateOdd,
     updatePotWin,
-    onpress
+    onpress,
+    indicate
 }) => {
 
     return (
@@ -41,7 +42,7 @@ const PlayComponent = ({
                   
                 </View>
 
-                <OnboardButton title={'Play'} onpress={onpress}/>
+                <OnboardButton title={'Play'} onpress={onpress} indicate={indicate}/>
 
                 
 
