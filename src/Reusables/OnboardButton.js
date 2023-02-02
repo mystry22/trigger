@@ -19,7 +19,7 @@ export default OnboardButton;
 const styles = StyleSheet.create({
     button:{
         backgroundColor: colors.red,
-        width: Width - 100,
+        width: Width - 50,
         marginTop:50,
         height: 60,
         borderRadius: 20,

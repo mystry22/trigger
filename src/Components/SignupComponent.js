@@ -4,6 +4,7 @@ import Input from '../Reusables/Input';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { useNavigation } from '@react-navigation/native';
+import OnboardButton from '../Reusables/OnboardButton';
 
 const SignupComponent = ({
   updateEmail,
@@ -11,7 +12,8 @@ const SignupComponent = ({
   updateLastName,
   updatePass,
   updatePhone,
-  onpress
+  onpress,
+  indicate
 
 }) => {
   const navigation = useNavigation();
@@ -57,9 +59,7 @@ const SignupComponent = ({
 
 
 
-      <TouchableOpacity style={styles.submit} onPress={onpress}>
-        <Text style={styles.signup}>SIGN UP</Text>
-      </TouchableOpacity>
+      <OnboardButton title={'SIGN UP'} onpress={onpress} indicate={indicate} />
 
 
       <View style={styles.sideThem}>

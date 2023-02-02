@@ -13,6 +13,7 @@ const Signup = () => {
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
+  const [indicate,setIndicator] = useState('no');
 
   const updateFirstName = (val)=>{
     setFirstName(val)
@@ -50,8 +51,9 @@ const Signup = () => {
 
   const SignUp = async()=>{
     const isValid = valid();
-
+    setIndicator('yes');
     if(isValid == 'err'){
+      setIndicator('no');
       Alert.alert('OOPS', 'One or more fields failed validation please reconfirm inputs', [
         {
           text: 'Ok',
@@ -72,10 +74,12 @@ const Signup = () => {
 
       const res = await signUp(data);
       if(res.msg == 'registration okay'){
+        setIndicator('no');
         await AsyncStorage.setItem('userToken',res.token);
         const rand = Math.random();
         setWitched(rand);
       }else{
+        setIndicator('no');
         Alert.alert('OOPS', 'Unable to complete operation at the moment please try again later', [
           {
             text: 'Ok',
@@ -95,6 +99,7 @@ const Signup = () => {
       updatePass={updatePass}
       updatePhone={updatePhone}
       onpress={SignUp}
+      indicate={indicate}
     />
   )
 }
