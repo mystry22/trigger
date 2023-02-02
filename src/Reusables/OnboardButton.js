@@ -3,12 +3,12 @@ import React from 'react';
 import colors from '../Utils/color';
 const Width = Dimensions.get('window').width;
 
-const OnboardButton = ({title,onpress}) => {
+const OnboardButton = ({title,onpress,indicate}) => {
   return (
     <TouchableOpacity style={styles.button} onPress={onpress}>
       <View style={{flexDirection:'row'}}>
 
-      <Text style={styles.title}>{title}</Text>
+      {indicate == 'yes' ? <ActivityIndicator color={'#fff'} size='large' style={{marginRight:5}} />: null}<Text style={styles.title}>{title}</Text>
       </View>
     </TouchableOpacity>
   )

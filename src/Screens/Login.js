@@ -10,6 +10,7 @@ const Login = () => {
   const {setWitched} = useContext(AuthLoginContext);
   const [email,setEmail] = useState('');
   const [pass,setPass] = useState('');
+  const [indicate,setIndicator] = useState('no');
 
 
   const updateEmail = (val)=>{
@@ -34,8 +35,9 @@ const Login = () => {
 
   const login = async()=>{
     const isValid = valid();
-  
+    setIndicator('yes');
     if(isValid == 'err'){
+      setIndicator('no');
       Alert.alert('OOPS', 'Email or Password failed validation, please note password must not be less than 6 Chars', [
         {
           text: 'Ok',
@@ -45,6 +47,7 @@ const Login = () => {
         
       ]);
     }else{
+      
       const data = {
         email:email,
         pass:pass
@@ -52,11 +55,12 @@ const Login = () => {
 
       const res = await signIn(data);
       if(res.msg == 'login success'){
-        
+        setIndicator('no');
         const rand  = Math.random();
         await AsyncStorage.setItem('userToken',res.token);
         setWitched(rand);
       }else{
+        setIndicator('no');
         Alert.alert('OOPS', 'Wrong login information, please check user details and try again', [
           {
             text: 'Ok',
@@ -73,6 +77,7 @@ const Login = () => {
       onpress={login}
       updateEmail={updateEmail}
       updatePass={updatePass}
+      indicate={indicate}
     />
   )
 }

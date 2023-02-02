@@ -6,7 +6,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import OnboardButton from '../Reusables/OnboardButton';
 import { useNavigation } from '@react-navigation/native';
 
-const LoginComponent = ({onpress,updateEmail,updatePass}) => {
+const LoginComponent = ({onpress,updateEmail,updatePass,indicate}) => {
     const navigation = useNavigation();
     const gotoSignup =()=>{
         navigation.navigate('Signup');
@@ -14,7 +14,7 @@ const LoginComponent = ({onpress,updateEmail,updatePass}) => {
     return (
         <View style={styles.container}>
             {/* Loggo Section */}
-            
+
             <Image source={require('../Assets/logo.png')} style={styles.logoImage} />
             {/* Text Section */}
             <Text style={styles.boldText}>Login</Text>
@@ -30,7 +30,7 @@ const LoginComponent = ({onpress,updateEmail,updatePass}) => {
                 <Input placeholder='Password' password={true} onChangeText={(val)=>updatePass(val)} />
             </View>
 
-            <OnboardButton title={'LOGIN'} onpress={onpress} />
+            <OnboardButton title={'LOGIN'} onpress={onpress} indicate={indicate} />
 
             <View style={styles.sideThem}>
 
