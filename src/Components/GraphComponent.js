@@ -68,6 +68,8 @@ const GraphComponent = ({ graphData }) => {
                 </Text>
             } */}
 
+            <Text style={styles.boldText}>Last 5 Transactions</Text>
+
             {graphData.length > 0 ?
 
                 graphData.map(tractions => (
@@ -98,7 +100,7 @@ const styles = StyleSheet.create({
     boldText: {
         fontWeight: '700',
         fontSize: 20,
-        marginBottom: 20,
+        marginBottom: 8,
         color: 'gray'
     },
     transactions: {
@@ -108,7 +110,7 @@ const styles = StyleSheet.create({
         padding: 10,
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginBottom:20
+        marginBottom: 20
     },
     status: {
         height: 30,
