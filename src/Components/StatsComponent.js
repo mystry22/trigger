@@ -1,10 +1,18 @@
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView,ActivityIndicator } from 'react-native';
-import React from 'react';
+import React,{useContext} from 'react';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Menu from '../Screens/Menu';
 import colors from '../Utils/color';
+import {AuthLoginContext} from '../Context/AuthLoginContext';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const StatsComponent = ({admincount,wins,pendings,loss,tract}) => {
+    const {setChanges} = useContext(AuthLoginContext);
+    const logOut = async()=>{
+        const rand = Math.random();
+        await AsyncStorage.removeItem('userToken');
+        setChanges(rand);
+    }
 
     return (
         <View style={styles.wrap}>
@@ -17,7 +25,7 @@ const StatsComponent = ({admincount,wins,pendings,loss,tract}) => {
                     <View >
 
                         <TouchableOpacity>
-                            <MaterialIcons name='logout' size={28} color={'#fff'} />
+                            <MaterialIcons name='logout' size={28} color={'#fff'} onPress={logOut} />
                         </TouchableOpacity>
                     </View>
                 </View>

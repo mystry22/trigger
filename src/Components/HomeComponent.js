@@ -6,7 +6,7 @@ import GraphComponent from './GraphComponent';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {AuthLoginContext} from '../Context/AuthLoginContext';
 
-const HomeComponent = ({share,graphData,userDetail}) => {
+const HomeComponent = ({share,graphData,userDetail, series,color}) => {
     const {setChanges} = useContext(AuthLoginContext);
 
     const logOut = async()=>{
@@ -54,7 +54,7 @@ const HomeComponent = ({share,graphData,userDetail}) => {
 
                 {/*Graph Section */}
 
-                <GraphComponent graphData={graphData} />
+                <GraphComponent graphData={graphData} series={series} color={color} />
             </View>
             <Menu />
         </View>
