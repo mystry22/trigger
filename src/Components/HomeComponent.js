@@ -54,7 +54,7 @@ const HomeComponent = ({share,graphData,userDetail, series,color}) => {
 
                 {/*Graph Section */}
 
-                <GraphComponent graphData={graphData} series={series} color={color} />
+                <GraphComponent graphData={graphData} />
             </View>
             <Menu />
         </View>

@@ -5,7 +5,7 @@ import { devEnv } from '../Config/env';
 
 const headers = {};
 const AxiosInstance = axios.create({
-    baseURL: 'http://ec2-3-8-234-225.eu-west-2.compute.amazonaws.com:4242',
+    baseURL: 'https://mystry22-triggerbackend.onrender.com',
     headers
 });
 
